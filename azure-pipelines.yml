@@ -8,6 +8,14 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- task: BlueBasher.bluebasher-workitemupdater.bluebasher-workitemupdater.WorkItemUpdater@2
+  displayName: 'WorkItem Updater'
+  inputs:
+    workItemType: 'User Story'
+
+    workItemState: PR
+
+
 - script: |
     dotnet build --configuration $(buildConfiguration)
     dotnet test dotnetcore-tests --configuration $(buildConfiguration) --logger trx
